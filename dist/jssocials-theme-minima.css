@@ -115,6 +115,15 @@
     .jssocials-share-messenger .jssocials-share-link:hover .jssocials-share-label, .jssocials-share-messenger .jssocials-share-link:focus .jssocials-share-label, .jssocials-share-messenger .jssocials-share-link:active .jssocials-share-label {
       color: #006acc; }
 
+.jssocials-share-browser_messenger .jssocials-share-link {
+  color: #0084ff; }
+  .jssocials-share-browser_messenger .jssocials-share-link .jssocials-share-label {
+    color: #0084ff; }
+  .jssocials-share-browser_messenger .jssocials-share-link:hover, .jssocials-share-browser_messenger .jssocials-share-link:focus, .jssocials-share-browser_messenger .jssocials-share-link:active {
+    color: #006acc; }
+    .jssocials-share-browser_messenger .jssocials-share-link:hover .jssocials-share-label, .jssocials-share-browser_messenger .jssocials-share-link:focus .jssocials-share-label, .jssocials-share-browser_messenger .jssocials-share-link:active .jssocials-share-label {
+      color: #006acc; }
+
 .jssocials-share-vkontakte .jssocials-share-link {
   color: #45668e; }
   .jssocials-share-vkontakte .jssocials-share-link .jssocials-share-label {
@@ -133,17 +142,24 @@
     .jssocials-share-rss .jssocials-share-link:hover .jssocials-share-label, .jssocials-share-rss .jssocials-share-link:focus .jssocials-share-label, .jssocials-share-rss .jssocials-share-link:active .jssocials-share-label {
       color: #cc7a00; }
 
+.jssocials-share-sms .jssocials-share-link {
+  color: #ffbd00; }
+  .jssocials-share-sms .jssocials-share-link .jssocials-share-label {
+    color: #ffbd00; }
+  .jssocials-share-sms .jssocials-share-link:hover, .jssocials-share-sms .jssocials-share-link:focus, .jssocials-share-sms .jssocials-share-link:active {
+    color: #cc9700; }
+    .jssocials-share-sms .jssocials-share-link:hover .jssocials-share-label, .jssocials-share-sms .jssocials-share-link:focus .jssocials-share-label, .jssocials-share-sms .jssocials-share-link:active .jssocials-share-label {
+      color: #cc9700; }
+
 .jssocials-share-link {
-  -webkit-transition: color 200ms ease-in-out;
-          transition: color 200ms ease-in-out; }
+  transition: color 200ms ease-in-out; }
   .jssocials-share-link.jssocials-share-link-count .jssocials-share-count {
     font-size: .5em; }
 
 .jssocials-share-label {
   font-size: 0.8em;
   color: #444;
-  -webkit-transition: color 200ms ease-in-out;
-          transition: color 200ms ease-in-out; }
+  transition: color 200ms ease-in-out; }
 
 .jssocials-share-count-box {
   margin-left: 0.3em;

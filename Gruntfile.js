@@ -84,6 +84,7 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask("default", ["jshint", "qunit", "clean", "sass", "autoprefixer", "concat", "uglify"]);
+    grunt.registerTask("default", ["clean", "sass", "autoprefixer", "concat", "uglify"]);
     grunt.registerTask("test", ["qunit"]);
 };
+
