@@ -76,6 +76,12 @@
   .jssocials-share-messenger .jssocials-share-link:hover {
     background: #006acc; }
 
+.jssocials-share-browser_messenger .jssocials-share-link {
+  background: #0084ff;
+  border: 1px solid #0077e6; }
+  .jssocials-share-browser_messenger .jssocials-share-link:hover {
+    background: #006acc; }
+
 .jssocials-share-vkontakte .jssocials-share-link {
   background: #45668e;
   border: 1px solid #3d5a7d; }
@@ -88,13 +94,18 @@
   .jssocials-share-rss .jssocials-share-link:hover {
     background: #cc7a00; }
 
+.jssocials-share-sms .jssocials-share-link {
+  background: #ffbd00;
+  border: 1px solid #e6aa00; }
+  .jssocials-share-sms .jssocials-share-link:hover {
+    background: #cc9700; }
+
 .jssocials-share-link {
   padding: .5em .6em;
   border-radius: 0.3em;
   box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.3), 0 1px 3px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.15);
   color: #fff;
-  -webkit-transition: background 200ms ease-in-out;
-          transition: background 200ms ease-in-out; }
+  transition: background 200ms ease-in-out; }
   .jssocials-share-link:hover, .jssocials-share-link:focus, .jssocials-share-link:active {
     color: #fff; }
 
@@ -117,7 +128,6 @@
     border-width: 6px 6px 0;
     border-color: #dcdcdc transparent;
     -webkit-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
             transform: rotate(90deg); }
   .jssocials-share-count-box:after {
     content: "";
@@ -130,7 +140,6 @@
     border-width: 5px 5px 0;
     border-color: #fff transparent;
     -webkit-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
             transform: rotate(90deg); }
   .jssocials-share-count-box .jssocials-share-count {
     line-height: 2.75em;
