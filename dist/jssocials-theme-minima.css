@@ -52,14 +52,14 @@
     .jssocials-share-email .jssocials-share-link:hover .jssocials-share-label, .jssocials-share-email .jssocials-share-link:focus .jssocials-share-label, .jssocials-share-email .jssocials-share-link:active .jssocials-share-label {
       color: #0e76e6; }
 
-.jssocials-share-stumbleupon .jssocials-share-link {
-  color: #eb4823; }
-  .jssocials-share-stumbleupon .jssocials-share-link .jssocials-share-label {
-    color: #eb4823; }
-  .jssocials-share-stumbleupon .jssocials-share-link:hover, .jssocials-share-stumbleupon .jssocials-share-link:focus, .jssocials-share-stumbleupon .jssocials-share-link:active {
-    color: #c93412; }
-    .jssocials-share-stumbleupon .jssocials-share-link:hover .jssocials-share-label, .jssocials-share-stumbleupon .jssocials-share-link:focus .jssocials-share-label, .jssocials-share-stumbleupon .jssocials-share-link:active .jssocials-share-label {
-      color: #c93412; }
+.jssocials-share-mix .jssocials-share-link {
+  color: #fd8235; }
+  .jssocials-share-mix .jssocials-share-link .jssocials-share-label {
+    color: #fd8235; }
+  .jssocials-share-mix .jssocials-share-link:hover, .jssocials-share-mix .jssocials-share-link:focus, .jssocials-share-mix .jssocials-share-link:active {
+    color: #fd6303; }
+    .jssocials-share-mix .jssocials-share-link:hover .jssocials-share-label, .jssocials-share-mix .jssocials-share-link:focus .jssocials-share-label, .jssocials-share-mix .jssocials-share-link:active .jssocials-share-label {
+      color: #fd6303; }
 
 .jssocials-share-whatsapp .jssocials-share-link {
   color: #29a628; }
@@ -150,6 +150,15 @@
     color: #cc9700; }
     .jssocials-share-sms .jssocials-share-link:hover .jssocials-share-label, .jssocials-share-sms .jssocials-share-link:focus .jssocials-share-label, .jssocials-share-sms .jssocials-share-link:active .jssocials-share-label {
       color: #cc9700; }
+
+.jssocials-share-reddit .jssocials-share-link {
+  color: #64a4ff; }
+  .jssocials-share-reddit .jssocials-share-link .jssocials-share-label {
+    color: #64a4ff; }
+  .jssocials-share-reddit .jssocials-share-link:hover, .jssocials-share-reddit .jssocials-share-link:focus, .jssocials-share-reddit .jssocials-share-link:active {
+    color: #3186ff; }
+    .jssocials-share-reddit .jssocials-share-link:hover .jssocials-share-label, .jssocials-share-reddit .jssocials-share-link:focus .jssocials-share-label, .jssocials-share-reddit .jssocials-share-link:active .jssocials-share-label {
+      color: #3186ff; }
 
 .jssocials-share-link {
   transition: color 200ms ease-in-out; }

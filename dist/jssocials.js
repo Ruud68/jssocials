@@ -1,7 +1,9 @@
-/*! jssocials - v1.5.0 - 2018-03-08
+/*! jssocials - v1.5.1-och - 2018-09-07
 * http://js-socials.com
 * Copyright (c) 2018 Artem Tabalin; Licensed MIT */
 (function(window, $, undefined) {
+
+    "use strict";
 
     var JSSOCIALS = "JSSocials",
         JSSOCIALS_DATA_KEY = JSSOCIALS;
@@ -14,7 +16,7 @@
     };
 
     var IMG_SRC_REGEX = /(\.(jpeg|png|gif|bmp|svg)$|^data:image\/(jpeg|png|gif|bmp|svg\+xml);base64)/i;
-    var URL_PARAMS_REGEX = /(&?[a-zA-Z0-9]+=)?\{([a-zA-Z0-9]+)\}/g;
+    var URL_PARAMS_REGEX = /(&?[a-zA-Z0-9]+=)?{([a-zA-Z0-9]+)}/g;
 
     var MEASURES = {
         "G": 1000000000,
@@ -192,8 +194,9 @@
         _getShareStrategy: function(share) {
             var result = shareStrategies[share.shareIn || this.shareIn];
 
-            if(!result)
+            if(!result) {
                 throw Error("Share strategy '" + this.shareIn + "' not found");
+            }
 
             return result;
         },
@@ -279,6 +282,9 @@
         },
 
         _formatShareUrl: function(url, share) {
+            if (!url)
+                return url;
+
             return url.replace(URL_PARAMS_REGEX, function(match, key, field) {
                 var value = share[field] || "";
                 return value ? field === "delimiter" ? value : (key || "") + window.encodeURIComponent(value) : "";
@@ -402,7 +408,7 @@
         popup: function(args) {
             return $("<a>").attr("href", "#")
                 .on("click", function() {
-                    window.open(args.shareUrl, null, "width=600, height=400, location=0, menubar=0, resizeable=0, scrollbars=0, status=0, titlebar=0, toolbar=0");
+                    window.open(args.shareUrl, "", "width=600, height=400, location=0, menubar=0, resizeable=0, scrollbars=0, status=0, titlebar=0, toolbar=0");
                     return false;
                 });
         },
@@ -432,6 +438,8 @@
 
 (function(window, $, jsSocials, undefined) {
 
+    "use strict";
+
     $.extend(jsSocials.shares, {
 
         email: {
@@ -452,7 +460,7 @@
         facebook: {
             label: "Like",
             logo: "fa fa-facebook",
-            shareUrl: "https://facebook.com/sharer/sharer.php?u={url}",
+            shareUrl: "https://facebook.com/sharer/sharer.php?u={url}&quote={text}",
             countUrl: "https://graph.facebook.com/?id={url}",
             getCount: function(data) {
                 return data.share && data.share.share_count || 0;
@@ -469,7 +477,7 @@
         linkedin: {
             label: "Share",
             logo: "fa fa-linkedin",
-            shareUrl: "https://www.linkedin.com/shareArticle?mini=true&url={url}",
+            shareUrl: "https://www.linkedin.com/shareArticle?mini=true&url={url}&text={text}",
             countUrl: "https://www.linkedin.com/countserv/count/share?format=jsonp&url={url}&callback=?",
             getCount: function(data) {
                 return data.count;
@@ -486,14 +494,11 @@
             }
         },
 
-        stumbleupon: {
-            label: "Share",
-            logo: "fa fa-stumbleupon",
-            shareUrl: "http://www.stumbleupon.com/submit?url={url}&title={title}",
-            countUrl:  "https://cors-anywhere.herokuapp.com/https://www.stumbleupon.com/services/1.01/badge.getinfo?url={url}",
-            getCount: function(data) {
-                return data.result && data.result.views;
-            }
+        mix: {
+            label: "Collect",
+            logo: "fab fa-mix",
+            shareUrl: "https://mix.com/add?url={url}",
+            countUrl:  ""
         },
 
         pocket: {
@@ -547,7 +552,7 @@
             label: "Like",
             logo: "fa fa-vk",
             shareUrl: "https://vk.com/share.php?url={url}&title={title}&description={text}",
-            countUrl: "https://vk.com/share.php?act=count&index=1&url={url}",
+            countUrl: "https://cors-anywhere.herokuapp.com/https://vk.com/share.php?act=count&index=1&url={url}",
             getCount: function(data) {
                 return parseInt(data.slice(15, -2).split(', ')[1]);
             }
@@ -574,6 +579,13 @@
             delimiter: "?",
             countUrl: "",
             shareIn: "top"
+        },
+        
+        reddit: {
+            label: "Reddit",
+            logo: "fa fa-reddit",
+            shareUrl: "https://www.reddit.com/submit?url={url}",
+            countUrl: ""
         }
 
     });

@@ -28,10 +28,10 @@
   .jssocials-share-email .jssocials-share-link:hover {
     background: #0e76e6; }
 
-.jssocials-share-stumbleupon .jssocials-share-link {
-  background: #eb4823; }
-  .jssocials-share-stumbleupon .jssocials-share-link:hover {
-    background: #c93412; }
+.jssocials-share-mix .jssocials-share-link {
+  background: #fd8235; }
+  .jssocials-share-mix .jssocials-share-link:hover {
+    background: #fd6303; }
 
 .jssocials-share-whatsapp .jssocials-share-link {
   background: #29a628; }
@@ -82,6 +82,11 @@
   background: #ffbd00; }
   .jssocials-share-sms .jssocials-share-link:hover {
     background: #cc9700; }
+
+.jssocials-share-reddit .jssocials-share-link {
+  background: #64a4ff; }
+  .jssocials-share-reddit .jssocials-share-link:hover {
+    background: #3186ff; }
 
 .jssocials-share-link {
   padding: .5em .6em;
