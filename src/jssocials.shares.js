@@ -23,10 +23,7 @@
             label: "Like",
             logo: "fa fa-facebook",
             shareUrl: "https://facebook.com/sharer/sharer.php?u={url}&quote={text}",
-            countUrl: "https://graph.facebook.com/?id={url}",
-            getCount: function(data) {
-                return data.share && data.share.share_count || 0;
-            }
+            countUrl: "ochServerSide"
         },
 
         googleplus: {
@@ -40,20 +37,14 @@
             label: "Share",
             logo: "fa fa-linkedin",
             shareUrl: "https://www.linkedin.com/shareArticle?mini=true&url={url}&text={text}",
-            countUrl: "https://www.linkedin.com/countserv/count/share?format=jsonp&url={url}&callback=?",
-            getCount: function(data) {
-                return data.count;
-            }
+            countUrl: ""
         },
 
         pinterest: {
             label: "Pin it",
             logo: "fa fa-pinterest",
             shareUrl: "https://pinterest.com/pin/create/bookmarklet/?media={media}&url={url}&description={text}",
-            countUrl: "https://api.pinterest.com/v1/urls/count.json?&url={url}&callback=?",
-            getCount: function(data) {
-                return data.count;
-            }
+            countUrl: "ochServerSide"
         },
 
         mix: {
@@ -114,10 +105,7 @@
             label: "Like",
             logo: "fa fa-vk",
             shareUrl: "https://vk.com/share.php?url={url}&title={title}&description={text}",
-            countUrl: "https://cors-anywhere.herokuapp.com/https://vk.com/share.php?act=count&index=1&url={url}",
-            getCount: function(data) {
-                return parseInt(data.slice(15, -2).split(', ')[1]);
-            }
+            countUrl: "ochServerSide"
         },
 
         line: {
@@ -134,7 +122,7 @@
             countUrl: ""
         },
 
-	sms: {
+        sms: {
             label: "SMS",
             logo: "fa fa-comments-o",
             shareUrl: "sms:{delimiter}body={text} {url}",
@@ -142,7 +130,7 @@
             countUrl: "",
             shareIn: "top"
         },
-        
+
         reddit: {
             label: "Reddit",
             logo: "fa fa-reddit",

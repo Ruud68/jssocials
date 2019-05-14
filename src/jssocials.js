@@ -238,6 +238,13 @@
             var deferred = $.Deferred();
             var countUrl = this._getCountUrl(share);
 
+            // OCH addition: read counts from on page variable set server side
+            if (countUrl == 'ochServerSide') {
+                if (ochShareCounts[share.share] != undefined) {
+                    return deferred.resolve(this._getCountValue(ochShareCounts[share.share], share));
+                }
+            }
+
             if(!countUrl) {
                 return deferred.resolve(0).promise();
             }
