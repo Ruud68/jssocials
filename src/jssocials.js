@@ -23,6 +23,12 @@
 
     var shares = {};
 
+    if(typeof Joomla !== 'undefined' && typeof Joomla.getOptions !== 'undefined') {
+        var ochShareCounts = Joomla.getOptions('plg_content_ochjssocials');
+    } else {
+        var ochShareCounts = {};
+    }
+
     function Socials(element, config) {
         var $element = $(element);
 
@@ -240,8 +246,10 @@
 
             // OCH addition: read counts from on page variable set server side
             if (countUrl == 'ochServerSide') {
-                if (ochShareCounts[share.share] != undefined) {
-                    return deferred.resolve(this._getCountValue(ochShareCounts[share.share], share));
+                var indexUrl = btoa(encodeURIComponent(share.counturl));
+
+                if (ochShareCounts[indexUrl] != undefined) {
+                    return deferred.resolve(this._getCountValue(ochShareCounts[indexUrl][share.share], share));
                 }
             }
 

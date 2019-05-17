@@ -1,4 +1,4 @@
-/*! jssocials - v1.5.2-och - 2019-05-14
+/*! jssocials - v1.5.2-och - 2019-05-15
 * http://js-socials.com
 * Copyright (c) 2019 Artem Tabalin; Licensed MIT */
 (function(window, $, undefined) {
@@ -25,6 +25,12 @@
     };
 
     var shares = {};
+
+    if(typeof Joomla !== 'undefined' && typeof Joomla.getOptions !== 'undefined') {
+        var ochShareCounts = Joomla.getOptions('plg_content_ochjssocials');
+    } else {
+        var ochShareCounts = {};
+    }
 
     function Socials(element, config) {
         var $element = $(element);
@@ -243,8 +249,10 @@
 
             // OCH addition: read counts from on page variable set server side
             if (countUrl == 'ochServerSide') {
-                if (ochShareCounts[share.share] != undefined) {
-                    return deferred.resolve(this._getCountValue(ochShareCounts[share.share], share));
+                var indexUrl = btoa(encodeURIComponent(share.counturl));
+
+                if (ochShareCounts[indexUrl] != undefined) {
+                    return deferred.resolve(this._getCountValue(ochShareCounts[indexUrl][share.share], share));
                 }
             }
 
