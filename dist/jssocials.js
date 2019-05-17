@@ -1,6 +1,6 @@
-/*! jssocials - v1.5.1-och - 2018-09-07
+/*! jssocials - v1.5.2-och - 2019-05-15
 * http://js-socials.com
-* Copyright (c) 2018 Artem Tabalin; Licensed MIT */
+* Copyright (c) 2019 Artem Tabalin; Licensed MIT */
 (function(window, $, undefined) {
 
     "use strict";
@@ -25,6 +25,12 @@
     };
 
     var shares = {};
+
+    if(typeof Joomla !== 'undefined' && typeof Joomla.getOptions !== 'undefined') {
+        var ochShareCounts = Joomla.getOptions('plg_content_ochjssocials');
+    } else {
+        var ochShareCounts = {};
+    }
 
     function Socials(element, config) {
         var $element = $(element);
@@ -240,6 +246,15 @@
         _loadCount: function(share) {
             var deferred = $.Deferred();
             var countUrl = this._getCountUrl(share);
+
+            // OCH addition: read counts from on page variable set server side
+            if (countUrl == 'ochServerSide') {
+                var indexUrl = btoa(encodeURIComponent(share.counturl));
+
+                if (ochShareCounts[indexUrl] != undefined) {
+                    return deferred.resolve(this._getCountValue(ochShareCounts[indexUrl][share.share], share));
+                }
+            }
 
             if(!countUrl) {
                 return deferred.resolve(0).promise();
@@ -461,10 +476,7 @@
             label: "Like",
             logo: "fa fa-facebook",
             shareUrl: "https://facebook.com/sharer/sharer.php?u={url}&quote={text}",
-            countUrl: "https://graph.facebook.com/?id={url}",
-            getCount: function(data) {
-                return data.share && data.share.share_count || 0;
-            }
+            countUrl: "ochServerSide"
         },
 
         googleplus: {
@@ -478,20 +490,14 @@
             label: "Share",
             logo: "fa fa-linkedin",
             shareUrl: "https://www.linkedin.com/shareArticle?mini=true&url={url}&text={text}",
-            countUrl: "https://www.linkedin.com/countserv/count/share?format=jsonp&url={url}&callback=?",
-            getCount: function(data) {
-                return data.count;
-            }
+            countUrl: ""
         },
 
         pinterest: {
             label: "Pin it",
             logo: "fa fa-pinterest",
             shareUrl: "https://pinterest.com/pin/create/bookmarklet/?media={media}&url={url}&description={text}",
-            countUrl: "https://api.pinterest.com/v1/urls/count.json?&url={url}&callback=?",
-            getCount: function(data) {
-                return data.count;
-            }
+            countUrl: "ochServerSide"
         },
 
         mix: {
@@ -552,10 +558,7 @@
             label: "Like",
             logo: "fa fa-vk",
             shareUrl: "https://vk.com/share.php?url={url}&title={title}&description={text}",
-            countUrl: "https://cors-anywhere.herokuapp.com/https://vk.com/share.php?act=count&index=1&url={url}",
-            getCount: function(data) {
-                return parseInt(data.slice(15, -2).split(', ')[1]);
-            }
+            countUrl: "ochServerSide"
         },
 
         line: {
@@ -572,7 +575,7 @@
             countUrl: ""
         },
 
-	sms: {
+        sms: {
             label: "SMS",
             logo: "fa fa-comments-o",
             shareUrl: "sms:{delimiter}body={text} {url}",
@@ -580,7 +583,7 @@
             countUrl: "",
             shareIn: "top"
         },
-        
+
         reddit: {
             label: "Reddit",
             logo: "fa fa-reddit",
